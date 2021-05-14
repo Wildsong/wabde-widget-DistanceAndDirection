@@ -113,9 +113,14 @@
 }
 
 .jimu-widget-DistanceAndDirection .label {
-  font-size: 12px;
+  font-size: 12px !important;
   margin: auto 5px;
   cursor: default;
+  width: calc(100% - 45px);
+}
+
+.jimu-widget-DistanceAndDirection .DDCheckBoxNode .jimu-checkbox {
+  width: 100%;
 }
 
 .jimu-widget-DistanceAndDirection .numberTextBox {
@@ -173,6 +178,7 @@
 
 .jimu-widget-DistanceAndDirection .DDCheckBoxNode {
   padding-top: 10px;
+  width: 100%;
 }
 
 /* Safari 6.1-10.0 (not 10.1, which is the latest version of Safari at this time) */

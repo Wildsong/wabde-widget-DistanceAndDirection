@@ -469,7 +469,7 @@ define([
         //Add layers
         dojoArray.forEach(layerList, dojoLang.hitch(this, function (layer) {
           if (layer.url) {
-            if (layer.type === "Feature Layer" && layer.capabilities.includes("Create,Delete,Query,Update,Editing")) {
+            if (layer.type === "Feature Layer" && this._containsSupportedCapabilities(layer.capabilities)) {
               var opt = document.createElement('option');
               opt.value = layer.name;
               opt.id = layer.id;
@@ -479,6 +479,22 @@ define([
             }
           }
         }));
+      },
+
+      /**
+       * Check if feature layer has the supported capabilities
+       * @param {*} capabilities
+       * @returns
+       */
+      _containsSupportedCapabilities: function (capabilities) {
+        var supported = ["create", "delete", "query", "update", "editing"];
+        var isSupported = true;
+        supported.forEach(function(supCap) {
+          if (capabilities.toLowerCase().split(",").indexOf(supCap) === -1) {
+            isSupported = false;
+          }
+        });
+        return isSupported;
       }
     });
   });
