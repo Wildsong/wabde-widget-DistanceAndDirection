@@ -160,5 +160,14 @@ define({
   "rings": "วงแหวน",
   "orientationUnit": "หน่วยทิศทาง",
   "radiusUnit": "หน่วยรัศมี",
-  "angleUnitLabel": "หน่วยมุม"
+  "angleUnitLabel": "หน่วยมุม",
+  "editSymbologyHint": "คำแนะนำ: คลิกที่ไอคอนแสดงตัวอย่างเพื่อแก้ไขสัญลักษณ์",
+  "lineSymbologyPopupTittle": "สัญลักษณ์เส้น",
+  "circleSymbologyPopupTittle": "สัญลักษณ์วงกลม",
+  "ellipseSymbologyPopupTittle": "สัญลักษณ์วงรี",
+  "ringSymbologyPopupTittle": "สัญลักษณ์วงแหวน",
+  "symbolAndLabelSettingsLabel": "การตั้งค่าสัญลักษณ์และป้ายกำกับ",
+  "symbologyPreviewLabel": "พรีวิวสัญลักษณ์",
+  "ColorAndSizeLabel": "ขนาดและสีป้ายกำกับ",
+  "colorPickerLabel": "ตัวเลือกสี"
 });

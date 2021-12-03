@@ -160,5 +160,14 @@ define({
   "rings": "Inele",
   "orientationUnit": "Unitate de orientare",
   "radiusUnit": "Unitate de rază",
-  "angleUnitLabel": "Unitate de unghi"
+  "angleUnitLabel": "Unitate de unghi",
+  "editSymbologyHint": "Sugestie: Faceți clic pe pictograma de previzualizare pentru a edita simbologia",
+  "lineSymbologyPopupTittle": "Simbologie linie",
+  "circleSymbologyPopupTittle": "Simbologie cerc",
+  "ellipseSymbologyPopupTittle": "Simbologie elipsă",
+  "ringSymbologyPopupTittle": "Simbologie inele",
+  "symbolAndLabelSettingsLabel": "Setări simbol și etichetă",
+  "symbologyPreviewLabel": "Previzualizare simbologie",
+  "ColorAndSizeLabel": "Culoare și dimensiune etichetă",
+  "colorPickerLabel": "Instrument de preluare a culorilor"
 });

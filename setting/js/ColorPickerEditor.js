@@ -20,8 +20,11 @@ define([
     "dijit/_WidgetBase",
     "dijit/_TemplatedMixin",
     "dijit/_WidgetsInTemplateMixin",
+    "dojo/Evented",
     "dojo/text!../templates/ColorPickerEditor.html",
     "jimu/dijit/ColorPickerPopup",
+    'dojo/on',
+    'dojo/_base/lang',
     "dijit/form/NumberSpinner"
   ],
   function (
@@ -30,10 +33,13 @@ define([
     _WidgetBase,
     _TemplatedMixin,
     _WidgetsInTemplateMixin,
+    Evented,
     template,
-    ColorPicker
+    ColorPicker,
+    dojoOn,
+    dojoLang
   ) {
-    return declare([_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin], {
+    return declare([_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Evented], {
       _defaultColor: "#485566",
       templateString: template,
       nls: null,
@@ -45,6 +51,9 @@ define([
         }, this.colorPicker);
         this.colorPicker.startup();
         this.inherited(arguments);
+        this.own(dojoOn(this.colorPicker, 'change', dojoLang.hitch(this, function () {
+          this.emit("colorChanged", this.tab);
+        })));
       },
 
       startup: function () {

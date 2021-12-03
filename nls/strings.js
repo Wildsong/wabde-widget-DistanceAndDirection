@@ -1,4 +1,4 @@
-﻿define({
+define({
   root: ({
     _widgetLabel: "Distance and Direction",
     tabLineTitle: "Line",
@@ -171,7 +171,16 @@
     unitLabel: "Unit",
     radiusUnit: "Radius Unit",
     angleUnitLabel: "Angle Unit",
-    radiusUnit: "Radius Unit"
+    radiusUnit: "Radius Unit",
+    editSymbologyHint: "Hint: Click on the preview icon to edit the symbology",
+    lineSymbologyPopupTittle: "Line symbology",
+    circleSymbologyPopupTittle: "Circle symbology",
+    ellipseSymbologyPopupTittle: "Ellipse symbology",
+    ringSymbologyPopupTittle: "Rings symbology",
+    symbolAndLabelSettingsLabel: "Symbol and label settings",
+    symbologyPreviewLabel: "Symbology Preview",
+    ColorAndSizeLabel: "Label color and size",
+    colorPickerLabel: "Color Picker"
   }),
   "ar": 1,
   "bs": 1,

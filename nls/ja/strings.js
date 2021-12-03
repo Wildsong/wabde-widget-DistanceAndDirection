@@ -160,5 +160,14 @@ define({
   "rings": "複数のリング",
   "orientationUnit": "方向単位",
   "radiusUnit": "半径単位",
-  "angleUnitLabel": "角度単位"
+  "angleUnitLabel": "角度単位",
+  "editSymbologyHint": "ヒント: プレビュー アイコンをクリックしてシンボルを編集",
+  "lineSymbologyPopupTittle": "ライン シンボル",
+  "circleSymbologyPopupTittle": "円シンボル",
+  "ellipseSymbologyPopupTittle": "楕円シンボル",
+  "ringSymbologyPopupTittle": "リング シンボル",
+  "symbolAndLabelSettingsLabel": "シンボルとラベルの設定",
+  "symbologyPreviewLabel": "シンボルのプレビュー",
+  "ColorAndSizeLabel": "ラベルの色とサイズ",
+  "colorPickerLabel": "カラー パレット"
 });

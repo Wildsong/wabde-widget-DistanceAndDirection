@@ -160,5 +160,14 @@ define({
   "rings": "Gyűrűk",
   "orientationUnit": "Tájolás mértékegysége",
   "radiusUnit": "Sugár mértékegysége",
-  "angleUnitLabel": "Szög mértékegysége"
+  "angleUnitLabel": "Szög mértékegysége",
+  "editSymbologyHint": "Tipp: Kattintson az előnézet ikonra a szimbólumrendszer szerkesztéséhez.",
+  "lineSymbologyPopupTittle": "Vonalas szimbólumrendszer",
+  "circleSymbologyPopupTittle": "Kör szimbólumrendszer",
+  "ellipseSymbologyPopupTittle": "Ellipszis szimbólumrendszer",
+  "ringSymbologyPopupTittle": "Gyűrűs szimbólumrendszer",
+  "symbolAndLabelSettingsLabel": "Szimbólum és felirat beállításai",
+  "symbologyPreviewLabel": "Szimbólumrendszer előnézete",
+  "ColorAndSizeLabel": "Felirat színe és mérete",
+  "colorPickerLabel": "Színválasztó"
 });

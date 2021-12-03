@@ -160,5 +160,14 @@ define({
   "rings": "حلقات",
   "orientationUnit": "وحدة الاتجاه",
   "radiusUnit": "وحدات نصف القطر",
-  "angleUnitLabel": "وحدة الزاوية"
+  "angleUnitLabel": "وحدة الزاوية",
+  "editSymbologyHint": "تلميح: انقر فوق رمز المعاينة لتحرير الترميز",
+  "lineSymbologyPopupTittle": "الترميز الخطي",
+  "circleSymbologyPopupTittle": "ترميز دائري",
+  "ellipseSymbologyPopupTittle": "ترميز قطع ناقص",
+  "ringSymbologyPopupTittle": "ترميز حلقي",
+  "symbolAndLabelSettingsLabel": "إعدادات التسمية والرمز",
+  "symbologyPreviewLabel": "معاينة الترميز",
+  "ColorAndSizeLabel": "لون التسمية وحجمها",
+  "colorPickerLabel": "منتقى الألوان"
 });

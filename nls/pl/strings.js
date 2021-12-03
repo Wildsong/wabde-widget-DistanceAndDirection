@@ -160,5 +160,14 @@ define({
   "rings": "Pierścienie",
   "orientationUnit": "Jednostka orientacji",
   "radiusUnit": "Jednostka promienia",
-  "angleUnitLabel": "Jednostka kąta"
+  "angleUnitLabel": "Jednostka kąta",
+  "editSymbologyHint": "Wskazówka: Kliknij ikonę podglądu, aby edytować symbole",
+  "lineSymbologyPopupTittle": "Symbole liniowe",
+  "circleSymbologyPopupTittle": "Symbole okręgów",
+  "ellipseSymbologyPopupTittle": "Symbole elips",
+  "ringSymbologyPopupTittle": "Symbole pierścieni",
+  "symbolAndLabelSettingsLabel": "Ustawienia symbolu i etykiety",
+  "symbologyPreviewLabel": "Podgląd symboli",
+  "ColorAndSizeLabel": "Kolor i rozmiar etykiety",
+  "colorPickerLabel": "Okno wyboru kolorów"
 });

@@ -62,8 +62,13 @@ define([
   'dojo/_base/event',
   'dojo/aspect',
   'dojo/DeferredList',
+  'jimu/symbolUtils',
+  '../SymbolChooserPopup',
+  '../setting/js/ColorPickerEditor',
+  'dojo/_base/Color',
   'jimu/dijit/formSelect',
-  'jimu/dijit/CheckBox'
+  'jimu/dijit/CheckBox',
+  'dijit/TitlePane'
 ], function (
   dojoDeclare,
   dojoLang,
@@ -111,7 +116,11 @@ define([
   focusUtil,
   Event,
   dojoAspect,
-  DojoDeferredList
+  DojoDeferredList,
+  symbolUtils,
+  SymbolChooserPopup,
+  ColorPickerEditor,
+  DojoColor
 ) {
   'use strict';
   return dojoDeclare([dijitWidgetBase, dijitTemplatedMixin, dijitWidgetsInTemplate], {
@@ -122,6 +131,9 @@ define([
     firstDistance: true,
     _restrictFocusOnAddCenterPointBtn: false,
     _centerPointInputKeyPressed: false,
+    _gl: null,
+    _tsGL: null,
+
 
     _setStartPointAttr: function () {
       this._set('startPoint');
@@ -135,6 +147,18 @@ define([
      */
     constructor: function (args) {
       dojoDeclare.safeMixin(this, args);
+      this._gl = null;
+      this._tsGL = null;
+    },
+
+    destroy: function () {
+      if (this._gl) {
+        this.map.removeLayer(this._gl);
+      }
+      if (this._tsGL) {
+        this.map.removeLayer(this._tsGL);
+      }
+      this.tabSwitched();
     },
 
     /*
@@ -209,6 +233,11 @@ define([
       });
       this.dt.setFillSymbol(this._circleSym);
       this.dt.set('lengthLayer', this._lengthLayer);
+      this._createSymbolPicker(this.ringSymbolNode, "rangeRingSymbol", "esriGeometryPolyline",
+        this.nls.ringSymbologyPopupTittle);
+      this.labelColorPicker = this._createColorPicker(this.labelColorPickerNode);
+      this._setColorPicker(this.labelSymbol.color);
+      this.labelTextSizeSpinner.set("value", this.labelSymbol.font.size);
 
       this.syncEvents();
 
@@ -497,7 +526,8 @@ define([
               isAbleToAddRow = true;
             }
           }));
-          if (isAbleToAddRow) {
+          //If no row available or all existing rows are valid then add new row on click of "+ Distances"
+          if (isAbleToAddRow || rows.length === 0) {
             this._distanceTable.addRow({});
           }
         })),
@@ -569,6 +599,21 @@ define([
       } else {
         this.own(dojoOn(this.addPointBtn, 'click', dojoLang.hitch(this, this.pointButtonWasClicked)));
       }
+
+      this.own(dojoOn(this.labelColorPicker, 'colorChanged', dojoLang.hitch(this, function (tab) {
+        if (tab === "ring") {
+          this._labelSym.color = this._getColorPicker();
+        }
+      })));
+      this.own(dojoOn(this.labelTextSizeSpinner, 'change', dojoLang.hitch(this, function () {
+        this._labelSym.font.size = this.labelTextSizeSpinner.getValue();
+      })));
+
+      this.own(dojoOn(this.labelColorPickerNode, 'keydown', dojoLang.hitch(this, function (event) {
+        if (event.keyCode === dojoKeys.ENTER || event.keyCode === dojoKeys.SPACE) {
+          this.labelColorPicker.colorPicker.domNode.click();
+        }
+      })));
     },
 
     /*
@@ -843,6 +888,7 @@ define([
               intervalValue;
             var cGraphic = new EsriGraphic(circlePath,
               this._lineSym, {
+                'ObjectID': this._gl.graphics.length + 1,
                 'Interval': interval,
                 CenterPoint: this.coordTool.get("value"),
                 Rings: parseFloat(params.circles.length),
@@ -898,6 +944,7 @@ define([
               new DojoDeferredList(projectDefList).then(dojoLang.hitch(this, function (radialLinesInMapSR) {
                 for (var j = 0; j < radialLinesInMapSR.length; j++) {
                   this._gl.add(new EsriGraphic(radialLinesInMapSR[j][1], this._lineSym, {
+                    'ObjectID': this._gl.graphics.length + 1,
                     'Interval': '',
                     CenterPoint: this.coordTool.get("value")
                   }));
@@ -1035,15 +1082,21 @@ define([
      * Make sure any active tools are deselected to prevent multiple actions being performed
      */
     tabSwitched: function () {
-      this.dt.deactivate();
-      this.dt.cleanup();
-      this.dt.disconnectOnMouseMoveHandlers();
+      if (this.dt) {
+        this.dt.deactivate();
+        this.dt.cleanup();
+        this.dt.disconnectOnMouseMoveHandlers();
+      }
       this._setMapNavigation(true);
-      this.dt.removeStartGraphic();
+      if (this.dt) {
+        this.dt.removeStartGraphic();
+      }
       if (this.addPointBtn) {
         dojoDomClass.remove(this.addPointBtn, 'drawPointBtn-active');
       }
-      DijitPopup.close(this.coordinateFormat);
+      if (this.coordinateFormat) {
+        DijitPopup.close(this.coordinateFormat);
+      }
     },
 
     /**
@@ -1124,6 +1177,110 @@ define([
      */
     setLastFocusNode: function () {
       jimuUtils.initLastFocusNode(this.domNodeObj, this.clearGraphicsButton);
+    },
+
+    /**
+     * This function creates symbols in config UI
+     * @param {object} symbolNode: contains a symbol chooser node
+     * @param {string} symbolType: contains symbol type
+     * @param {string} geometryType: contains symbol geometry type
+     * @param {string} symbolChooserTitle: contains a symbol chooser popup title
+     * @memberOf widgets/DD/Views/TabRange
+     */
+    _createSymbolPicker: function (symbolNode, symbolType, geometryType, symbolChooserTitle) {
+      var objSymbol, params;
+      //if symbol geometry exist
+      if (geometryType) {
+        objSymbol = {};
+        objSymbol.type = jimuUtils.getSymbolTypeByGeometryType(geometryType);
+        // if symbols parameter available in input parameters then take symbol details
+        if (this.hasOwnProperty('_lineSym')) {
+          // fetch selected symbol from config
+          objSymbol.symbol = this._lineSym;
+        }
+        // }
+        //create params to initialize 'symbolchooserPopup' widget
+        params = {
+          symbolChooserTitle: symbolChooserTitle,
+          symbolParams: objSymbol,
+          nls: this.nls,
+          symbolType: symbolType
+        };
+        //display configured symbol in symbol chooser node
+        this._showSelectedSymbol(symbolNode, objSymbol.symbol);
+        //attach 'click' event on node to display symbol chooser popup
+        this.own(dojoOn(symbolNode, 'click', dojoLang.hitch(this, function () {
+          //set recently selected symbol in symbol chooser popup
+          objSymbol.symbol = this._lineSym;
+          this._initSymbolChooserPopup(params, symbolNode);
+          focusUtil.focus(this.ringSymbolNode);
+        })));
+        this.own(dojoOn(symbolNode, 'keydown', dojoLang.hitch(this, function (evt) {
+          if (evt.keyCode === dojoKeys.ENTER || evt.keyCode === dojoKeys.SPACE) {
+            //set recently selected symbol in symbol chooser popup
+            objSymbol.symbol = this._lineSym;
+            this._initSymbolChooserPopup(params, symbolNode);
+            focusUtil.focus(this.ringSymbolNode);
+          }
+        })));
+      }
+    },
+
+    /**
+    * Initialize symbol chooser popup widget
+    * @param {object} params: contains params to initialize widget
+    * @param {object} symbolChooserNode: contains node to display selected graphic symbol
+    * @memberOf widgets/DD/Views/TabRange
+    **/
+    _initSymbolChooserPopup: function (params, symbolChooserNode) {
+      var symbolChooserObj = new SymbolChooserPopup(params);
+      //handler for poopup 'OK' button 'click' event
+      symbolChooserObj.onOkClick = dojoLang.hitch(this, function () {
+        //get selected symbol
+        var symbolJson = symbolChooserObj.symbolChooser.getSymbol();
+        this._showSelectedSymbol(symbolChooserNode, symbolJson);
+        symbolChooserObj.popup.close();
+      });
+    },
+
+    /**
+    * show selected graphic symbol in symbol chooser node
+    * @param {object} symbolChooserNode: contains a symbol chooser node
+    * @param {object} symbolJson: contains a json structure for symbol
+    * @member of widgets/DD/Views/TabRange
+    **/
+    _showSelectedSymbol: function (symbolChooserNode, symbolJson) {
+      domConstruct.empty(symbolChooserNode);
+      if (symbolJson) {
+        var symbolNode = symbolUtils.createSymbolNode(symbolJson);
+        // if symbol node is not created
+        if (!symbolNode) {
+          symbolNode = domConstruct.create('div');
+        }
+        domConstruct.place(symbolNode, symbolChooserNode);
+        //store selected symbol in 'symbolParams' object
+        this._lineSym = new EsriSimpleLineSymbol(symbolJson.toJson());
+      }
+    },
+
+    _createColorPicker: function (node) {
+      var colorPicker = new ColorPickerEditor({
+        nls: this.nls,
+        tab: "ring"
+      });
+      colorPicker.placeAt(node);
+      colorPicker.startup();
+      return colorPicker;
+    },
+
+    _getColorPicker: function () {
+      return this.labelColorPicker.getValues();
+    },
+
+    _setColorPicker: function (color) {
+      this.labelColorPicker.setValues({
+        color: new DojoColor(color)
+      });
     }
   });
 });

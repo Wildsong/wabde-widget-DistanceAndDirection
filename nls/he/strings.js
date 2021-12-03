@@ -160,5 +160,14 @@ define({
   "rings": "טבעות",
   "orientationUnit": "יחידת כיוון",
   "radiusUnit": "יחידת רדיוס",
-  "angleUnitLabel": "יחידת זווית"
+  "angleUnitLabel": "יחידת זווית",
+  "editSymbologyHint": "רמז: לחץ על צלמית התצוגה המקדימה כדי לערוך את הסימבולוגיה",
+  "lineSymbologyPopupTittle": "סימבולוגיית קווים",
+  "circleSymbologyPopupTittle": "סימבולוגיית עיגולים",
+  "ellipseSymbologyPopupTittle": "סימבולוגיית אליפסות",
+  "ringSymbologyPopupTittle": "סימבולוגיית טבעות",
+  "symbolAndLabelSettingsLabel": "הגדרות סמלים ותוויות",
+  "symbologyPreviewLabel": "תצוגה מקדימה של סימבולוגיה",
+  "ColorAndSizeLabel": "צבע וגודל תוויות",
+  "colorPickerLabel": "בורר צבעים"
 });

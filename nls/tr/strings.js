@@ -160,5 +160,14 @@ define({
   "rings": "Halkalar",
   "orientationUnit": "Yönelim Birimi",
   "radiusUnit": "Yarıçap Birimi",
-  "angleUnitLabel": "Açı Birimi"
+  "angleUnitLabel": "Açı Birimi",
+  "editSymbologyHint": "İpucu: Sembolojiyi düzenlemek için ön izleme simgesine tıklayın",
+  "lineSymbologyPopupTittle": "Çizgi sembolojisi",
+  "circleSymbologyPopupTittle": "Daire sembolojisi",
+  "ellipseSymbologyPopupTittle": "Elips sembolojisi",
+  "ringSymbologyPopupTittle": "Halkalar sembolojisi",
+  "symbolAndLabelSettingsLabel": "Sembol ve etiket ayarları",
+  "symbologyPreviewLabel": "Semboloji Ön izleme",
+  "ColorAndSizeLabel": "Etiket rengi ve boyutu",
+  "colorPickerLabel": "Renk Seçici"
 });

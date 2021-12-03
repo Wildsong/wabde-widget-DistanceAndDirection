@@ -160,5 +160,14 @@ define({
   "rings": "Ringen",
   "orientationUnit": "Oriëntatie-eenheid",
   "radiusUnit": "Straaleenheid",
-  "angleUnitLabel": "Hoekeenheid"
+  "angleUnitLabel": "Hoekeenheid",
+  "editSymbologyHint": "Hint: klik op het voorbeeldpictogram om de symbologie te bewerken",
+  "lineSymbologyPopupTittle": "Lijnsymbologie",
+  "circleSymbologyPopupTittle": "Cirkelsymbologie",
+  "ellipseSymbologyPopupTittle": "Ellipssymbologie",
+  "ringSymbologyPopupTittle": "Ringensymbologie",
+  "symbolAndLabelSettingsLabel": "Symbool- en labelinstellingen",
+  "symbologyPreviewLabel": "Symbologievoorbeeld",
+  "ColorAndSizeLabel": "Labelkleur en -grootte",
+  "colorPickerLabel": "Kleurenkiezer"
 });

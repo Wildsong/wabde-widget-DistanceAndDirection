@@ -160,5 +160,14 @@ define({
   "rings": "Anéis",
   "orientationUnit": "Unidade de Orientação",
   "radiusUnit": "Unidade do Raio",
-  "angleUnitLabel": "Unidade do Ângulo"
+  "angleUnitLabel": "Unidade do Ângulo",
+  "editSymbologyHint": "Dica: Clique no ícone de visualização para editar a simbologia",
+  "lineSymbologyPopupTittle": "Simbologia de linha",
+  "circleSymbologyPopupTittle": "Simbologia de círculo",
+  "ellipseSymbologyPopupTittle": "Simbologia de elipse",
+  "ringSymbologyPopupTittle": "Simbologia de anéis",
+  "symbolAndLabelSettingsLabel": "Configurações de símbolo e rótulo",
+  "symbologyPreviewLabel": "Visualização de Simbologia",
+  "ColorAndSizeLabel": "Cor e tamanho do rótulo",
+  "colorPickerLabel": "Seletor de Cores"
 });

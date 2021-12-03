@@ -160,5 +160,14 @@ define({
   "rings": "Prstenovi",
   "orientationUnit": "Jedinica za orijentaciju",
   "radiusUnit": "Jedinica za prečnik",
-  "angleUnitLabel": "Jedinica za ugao"
+  "angleUnitLabel": "Jedinica za ugao",
+  "editSymbologyHint": "Podsetnik: kliknite na ikonicu za pregled da biste uredili simbologiju",
+  "lineSymbologyPopupTittle": "Simbologija linija",
+  "circleSymbologyPopupTittle": "Simbologija kruga",
+  "ellipseSymbologyPopupTittle": "Simbologija elipse",
+  "ringSymbologyPopupTittle": "Simbologija prstenova",
+  "symbolAndLabelSettingsLabel": "Postavke simbola i oznaka",
+  "symbologyPreviewLabel": "Pregled simbologije",
+  "ColorAndSizeLabel": "Boja i veličina oznake",
+  "colorPickerLabel": "Birač boja"
 });

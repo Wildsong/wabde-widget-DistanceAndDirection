@@ -160,5 +160,14 @@ define({
   "rings": "Vòng",
   "orientationUnit": "Đơn vị Hướng",
   "radiusUnit": "Đơn vị Bán kính",
-  "angleUnitLabel": "Đơn vị Góc"
+  "angleUnitLabel": "Đơn vị Góc",
+  "editSymbologyHint": "Gợi ý: Nhấp vào biểu tượng xem trước để chỉnh sửa ký hiệu",
+  "lineSymbologyPopupTittle": "Diễn đạt bằng ký hiệu đường",
+  "circleSymbologyPopupTittle": "Diễn đạt bằng ký hiệu hình tròn",
+  "ellipseSymbologyPopupTittle": "Diễn đạt bằng ký hiệu hình elip",
+  "ringSymbologyPopupTittle": "Diễn đạt bằng ký hiệu vòng",
+  "symbolAndLabelSettingsLabel": "Các thiết lập cho nhãn và ký hiệu",
+  "symbologyPreviewLabel": "Xem trước Ký hiệu",
+  "ColorAndSizeLabel": "Màu sắc và kích thước nhãn",
+  "colorPickerLabel": "Trình chọn màu"
 });

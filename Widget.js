@@ -45,8 +45,8 @@ define([
   'esri/dijit/util/busyIndicator',
   'esri/graphic',
   'esri/layers/FeatureLayer',
-  'esri/renderers/SimpleRenderer',
   'dijit/focus',
+  'esri/renderers/UniqueValueRenderer',
   './js/jquery.easy-autocomplete'
 ], function (
   dojoDeclare,
@@ -79,8 +79,8 @@ define([
   busyIndicator,
   Graphic,
   FeatureLayer,
-  SimpleRenderer,
-  focusUtils
+  focusUtils,
+  UniqueValueRenderer
 ) {
   'use strict';
   var clz = dojoDeclare([jimuBaseWidget, dijitWidgetsInTemplate], {
@@ -1056,27 +1056,23 @@ define([
     },
 
     getRenderer: function () {
-
-      var uvrJson = {
-        "type": "simple"
-      };
-
+      var uvrJson;
       switch (this._typeOfInput) {
 
         case "line":
-          uvrJson.symbol = this.lineTab.lineSymbol;
+          uvrJson = this._createRendererForLineLayer();
           break;
 
         case "circle":
-          uvrJson.symbol = this.circleTab.circleSymbol;
+          uvrJson = this._createRendererForPolygonLayer();
           break;
 
         case "ellipse":
-          uvrJson.symbol = this.ellipseTab.ellipseSymbol;
+          uvrJson = this._createRendererForPolygonLayer();
           break;
 
         case "ring":
-          uvrJson.symbol = this.rangeTab.lineSymbol;
+          uvrJson = this._createRendererForLineLayer();
           break;
 
         default:
@@ -1084,8 +1080,66 @@ define([
       }
 
       // create a renderer for the DD layer to override default symbology
-      return new SimpleRenderer(uvrJson);
+      return new UniqueValueRenderer(uvrJson);
 
+    },
+
+    /**
+     * create renderer for publish polygon layers
+     **/
+    _createRendererForPolygonLayer: function () {
+      var uniqueValueInfos = [], symbol;
+      dojoArray.forEach(this._graphicsAdded, lang.hitch(this, function (g) {
+        symbol = {
+          "value": g.attributes.ObjectID,
+          "symbol": g.symbol.toJson()
+        };
+        uniqueValueInfos.push(symbol);
+      }));
+
+      return {
+        "type": "uniqueValue",
+        "field1": "OBJECTID",
+        "uniqueValueInfos": uniqueValueInfos,
+        "defaultSymbol": {
+          type: 'esriSFS',
+          style: 'esriSFSNull',
+          color: [255, 0, 0, 0],
+          outline: {
+            color: [255, 50, 50, 255],
+            width: 1.25,
+            type: 'esriSLS',
+            style: 'esriSLSSolid'
+          }
+        }
+      };
+    },
+
+    /**
+     * create renderer for publish line layers
+     **/
+    _createRendererForLineLayer: function () {
+      var uniqueValueInfos = [], symbol;
+      dojoArray.forEach(this._graphicsAdded, lang.hitch(this, function (g) {
+        if (g.attributes !== undefined && !g.attributes.hasOwnProperty("isDirectionalGraphic")) {
+          symbol = {
+            "value": g.attributes.ObjectID,
+            "symbol": g.symbol.toJson()
+          };
+          uniqueValueInfos.push(symbol);
+        }
+      }));
+      return {
+        "type": "uniqueValue",
+        "field1": "OBJECTID",
+        "uniqueValueInfos": uniqueValueInfos,
+        "defaultSymbol": {
+          type: 'esriSLS',
+          style: 'esriSLSSolid',
+          color: [255, 50, 50, 255],
+          width: 1.25
+        }
+      };
     },
 
     getGeometryTypeAndFields: function () {

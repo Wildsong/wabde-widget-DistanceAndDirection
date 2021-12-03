@@ -160,5 +160,14 @@ define({
   "rings": "Anells",
   "orientationUnit": "Unitat d'orientació",
   "radiusUnit": "Unitat de radi",
-  "angleUnitLabel": "Unitat d'angle"
+  "angleUnitLabel": "Unitat d'angle",
+  "editSymbologyHint": "Suggeriment: feu clic a la icona de visualització prèvia per editar la simbologia",
+  "lineSymbologyPopupTittle": "Simbologia de línia",
+  "circleSymbologyPopupTittle": "Simbologia de cercle",
+  "ellipseSymbologyPopupTittle": "Simbologia d'el·lipse",
+  "ringSymbologyPopupTittle": "Simbologia d'anells",
+  "symbolAndLabelSettingsLabel": "Configuració de la simbologia i les etiquetes",
+  "symbologyPreviewLabel": "Visualització prèvia de la simbologia",
+  "ColorAndSizeLabel": "Color i mida de l'etiqueta",
+  "colorPickerLabel": "Selector de color"
 });

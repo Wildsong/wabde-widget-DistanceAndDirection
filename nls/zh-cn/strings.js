@@ -160,5 +160,14 @@ define({
   "rings": "环",
   "orientationUnit": "方向单位",
   "radiusUnit": "半径单位",
-  "angleUnitLabel": "角度单位"
+  "angleUnitLabel": "角度单位",
+  "editSymbologyHint": "提示：单击预览图标可编辑符号系统",
+  "lineSymbologyPopupTittle": "线符号系统",
+  "circleSymbologyPopupTittle": "圆圈符号系统",
+  "ellipseSymbologyPopupTittle": "椭圆符号系统",
+  "ringSymbologyPopupTittle": "环形符号系统",
+  "symbolAndLabelSettingsLabel": "符号和标注设置",
+  "symbologyPreviewLabel": "符号系统预览",
+  "ColorAndSizeLabel": "标注颜色和大小",
+  "colorPickerLabel": "颜色选取器"
 });

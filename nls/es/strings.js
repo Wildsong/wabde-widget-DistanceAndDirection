@@ -160,5 +160,14 @@ define({
   "rings": "Anillos",
   "orientationUnit": "Unidad de orientación",
   "radiusUnit": "Unidad de radio",
-  "angleUnitLabel": "Unidad de ángulo"
+  "angleUnitLabel": "Unidad de ángulo",
+  "editSymbologyHint": "Sugerencia: Haga clic en el icono de vista previa para editar la simbología",
+  "lineSymbologyPopupTittle": "Simbología de línea",
+  "circleSymbologyPopupTittle": "Simbología de círculo",
+  "ellipseSymbologyPopupTittle": "Simbología de elipse",
+  "ringSymbologyPopupTittle": "Simbología de anillos",
+  "symbolAndLabelSettingsLabel": "Configuración de símbolos y etiquetas",
+  "symbologyPreviewLabel": "Vista previa de simbología",
+  "ColorAndSizeLabel": "Color y tamaño de etiqueta",
+  "colorPickerLabel": "Selector de color"
 });

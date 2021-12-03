@@ -160,5 +160,14 @@ define({
   "rings": "Kružnice",
   "orientationUnit": "Jednotka orientace",
   "radiusUnit": "Jednotka poloměru",
-  "angleUnitLabel": "Úhlová jednotka"
+  "angleUnitLabel": "Úhlová jednotka",
+  "editSymbologyHint": "Nápověda: Kliknutím na ikonu náhledu upravíte symboliku",
+  "lineSymbologyPopupTittle": "Symbolika linie",
+  "circleSymbologyPopupTittle": "Symbolika kruhu",
+  "ellipseSymbologyPopupTittle": "Symbolika elipsy",
+  "ringSymbologyPopupTittle": "Symbolika kružnice",
+  "symbolAndLabelSettingsLabel": "Nastavení symbolů a popisků",
+  "symbologyPreviewLabel": "Náhled symboliky",
+  "ColorAndSizeLabel": "Barva a velikost popisků",
+  "colorPickerLabel": "Výběr barvy"
 });

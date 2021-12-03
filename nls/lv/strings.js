@@ -160,5 +160,14 @@ define({
   "rings": "Apļi",
   "orientationUnit": "Orientācijas mērvienība",
   "radiusUnit": "Rādiusa mērvienība",
-  "angleUnitLabel": "Leņķa mērvienība"
+  "angleUnitLabel": "Leņķa mērvienība",
+  "editSymbologyHint": "Padoms. Noklikšķiniet uz priekšskatījuma ikonas, lai rediģētu simbolizāciju",
+  "lineSymbologyPopupTittle": "Līnijas simbolizācija",
+  "circleSymbologyPopupTittle": "Apļa simbolizācija",
+  "ellipseSymbologyPopupTittle": "Elipses simbolizācija",
+  "ringSymbologyPopupTittle": "Gredzenu simbolizācija",
+  "symbolAndLabelSettingsLabel": "Simbolu un kartes teksta iestatījumi",
+  "symbologyPreviewLabel": "Simbolizācijas priekšskatījums",
+  "ColorAndSizeLabel": "Kartes teksta krāsa un izmērs",
+  "colorPickerLabel": "Krāsu atlasītājs"
 });

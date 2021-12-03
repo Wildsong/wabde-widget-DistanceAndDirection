@@ -160,5 +160,14 @@ define({
   "rings": "Kruhy",
   "orientationUnit": "Jednotka orientácie",
   "radiusUnit": "Jednotka polomeru",
-  "angleUnitLabel": "Jednotka uhla"
+  "angleUnitLabel": "Jednotka uhla",
+  "editSymbologyHint": "Tip: Symboliku upravíte kliknutím na ikonu náhľadu",
+  "lineSymbologyPopupTittle": "Symbolika línie",
+  "circleSymbologyPopupTittle": "Symbolika kruhu",
+  "ellipseSymbologyPopupTittle": "Symbolika elipsy",
+  "ringSymbologyPopupTittle": "Symbolika prstencov",
+  "symbolAndLabelSettingsLabel": "Nastavenia symbolov a popisov",
+  "symbologyPreviewLabel": "Náhľad symboliky",
+  "ColorAndSizeLabel": "Farba a veľkosť popisov",
+  "colorPickerLabel": "Výber farby"
 });

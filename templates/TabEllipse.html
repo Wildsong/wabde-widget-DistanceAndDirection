@@ -56,7 +56,7 @@
         <label>${nls.unitLabel}</label>
         <div class="controlItem">
           <select aria-label="${nls.unitLabel}" style="width: 100%;" data-dojo-type="jimu/dijit/formSelect"
-            id="lengthUnitDD" data-dojo-attach-point="lengthUnitDD">
+            data-dojo-attach-point="lengthUnitDD">
             <option value="feet">${nls.units.feet}</option>
             <option value="kilometers" selected="selected">${nls.units.kilometers}</option>
             <option value="miles">${nls.units.miles}</option>
@@ -70,16 +70,42 @@
     <div class="controlGroup">
       <label>${nls.orientationLabel}</label>
       <div class="controlItem" data-dojo-attach-point="angleInputDiv">
-        <input aria-label="${nls.orientationLabel}" data-dojo-type="dijit/form/NumberTextBox" style="width: calc(100% - 108px);"
-          required='true' , value='0' , data-dojo-props="constraints:{min:0, max:360}"
-          data-dojo-attach-point="angleInput" />
+        <input aria-label="${nls.orientationLabel}" data-dojo-type="dijit/form/NumberTextBox"
+          style="width: calc(100% - 108px);" required='true' , value='0' ,
+          data-dojo-props="constraints:{min:0, max:360}" data-dojo-attach-point="angleInput" />
         <select aria-label="${nls.orientationLabel}" style="width: 100px" class="controlSpace noResize"
-          data-dojo-type="jimu/dijit/formSelect" id="angleUnitDD" data-dojo-attach-point="angleUnitDD">
+          data-dojo-type="jimu/dijit/formSelect" data-dojo-attach-point="angleUnitDD">
           <option value="degrees">${nls.degreesLabel}</option>
           <option value="mils">${nls.milsLabel}</option>
         </select>
       </div>
     </div>
+
+    <div class="controlGroup" data-dojo-attach-point='symbologyControlDiv'>
+      <div data-dojo-attach-point='symbolControl' title="${nls.symbolAndLabelSettingsLabel}"
+        data-dojo-type="dijit/TitlePane" data-dojo-props="open: false">
+        <div class="controlGroup" style="margin-top: 0px;">
+    
+          <div class="controlItem esriCTPaddingBottom10">
+            <div class="esriCTLabel">${nls.symbologyPreviewLabel}</div>
+            <div tabindex="0" data-dojo-attach-point="ellipseSymbolNode"></div>
+          </div>
+    
+          <div class="controlItem esriCTPaddingBottom10 esriCTLabelSettings">
+            <div class="esriCTLabel">${nls.ColorAndSizeLabel}</div>
+            <div style="margin-right:10px;" tabindex="0" aria-label="${nls.colorPickerLabel}"
+              data-dojo-attach-point="labelColorPickerNode"></div>
+            <input data-dojo-attach-point="labelTextSizeSpinner" aria-label="${nls.ColorAndSizeLabel}"
+              data-dojo-type="dijit/form/NumberSpinner"
+              data-dojo-props='value:12,smallDelta:1,constraints:{min:1, max:36, places: 0}' type="text"
+              style="width: calc(100% - 200px)" />
+          </div>
+    
+          <div class="esriCTHintCheck">${nls.editSymbologyHint}</div>
+        </div>
+      </div>
+    </div>
+
     <div class="controlGroup">
       <label class="warning">${nls.warningMessage}</label>
     </div>

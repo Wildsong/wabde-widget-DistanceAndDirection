@@ -53,9 +53,15 @@ define([
   'dijit/focus',
   'dojo/_base/event',
   'dojo/aspect',
+  'dojo/dom-construct',
+  'jimu/symbolUtils',
+  '../SymbolChooserPopup',
+  '../setting/js/ColorPickerEditor',
+  'dojo/_base/Color',
   'dijit/form/NumberTextBox',
   'jimu/dijit/formSelect',
-  'jimu/dijit/CheckBox'
+  'jimu/dijit/CheckBox',
+  'dijit/TitlePane'
 ], function (
   dojoDeclare,
   dojoLang,
@@ -92,7 +98,12 @@ define([
   templateStr,
   focusUtil,
   Event,
-  dojoAspect
+  dojoAspect,
+  domConstruct,
+  symbolUtils,
+  SymbolChooserPopup,
+  ColorPickerEditor,
+  DojoColor
 ) {
   'use strict';
   return dojoDeclare([dijitWidgetBase, dijitTemplatedMixin, dijitWidgetsInTemplate], {
@@ -102,12 +113,26 @@ define([
     centerPointGraphic: null,
     _restrictFocusOnAddCenterPointBtn: false,
     _centerPointInputKeyPressed: false,
+    _gl: null,
+    _textGL: null,
 
     /*
      * class constructor
      */
     constructor: function (args) {
       dojoDeclare.safeMixin(this, args);
+      this._gl = null;
+      this._textGL = null;
+    },
+
+    destroy: function () {
+      if (this._gl) {
+        this.map.removeLayer(this._gl);
+      }
+      if (this._textGL) {
+        this.map.removeLayer(this._textGL);
+      }
+      this.tabSwitched();
     },
 
     /*
@@ -184,7 +209,11 @@ define([
       this.dt.set('lengthUnit', 'kilometers');
       this.dt.set('angle', 0);
       this.dt.set('ellipseType', 'semi');
-
+      this._createSymbolPicker(this.ellipseSymbolNode, "ellipseSymbol", "esriGeometryPolygon",
+        this.nls.ellipseSymbologyPopupTittle);
+      this.labelColorPicker = this._createColorPicker(this.labelColorPickerNode);
+      this._setColorPicker(this.labelSymbol.color);
+      this.labelTextSizeSpinner.set("value", this.labelSymbol.font.size);
       this.syncEvents();
 
       this.checkValidInputs();
@@ -501,6 +530,21 @@ define([
       } else {
         this.own(dojoOn(this.addPointBtn, 'click', dojoLang.hitch(this, this.pointButtonWasClicked)));
       }
+
+      this.own(dojoOn(this.labelColorPicker, 'colorChanged', dojoLang.hitch(this, function (tab) {
+        if (tab === "ellipse") {
+          this._labelSym.color = this._getColorPicker();
+        }
+      })));
+      this.own(dojoOn(this.labelTextSizeSpinner, 'change', dojoLang.hitch(this, function (value) {
+        this._labelSym.font.size = this.labelTextSizeSpinner.getValue();
+      })));
+
+      this.own(dojoOn(this.labelColorPickerNode, 'keydown', dojoLang.hitch(this, function (event) {
+        if (event.keyCode === dojoKeys.ENTER || event.keyCode === dojoKeys.SPACE) {
+          this.labelColorPicker.colorPicker.domNode.click();
+        }
+      })));
     },
 
     okButtonClicked: function () {
@@ -729,10 +773,11 @@ define([
           parseFloat(this.minorAxisInput.value) * 2 : parseFloat(this.minorAxisInput.value);
 
         this.currentEllipse.setAttributes({
+          'ObjectID': this._gl.graphics.length + 1,
           'MINOR': type + ": " + this.minorAxisInput.get('displayedValue') + " " +
             this.lengthUnitDD.get('displayedValue'),
           'MAJOR': type + ": " + this.majorAxisInput.get('displayedValue') + " " +
-            dijit.byId('lengthUnitDD').get('displayedValue'),
+            this.lengthUnitDD.get('displayedValue'),
           'ORIENTATION_ANGLE': this.angleInput.get('displayedValue') + " " +
             this.angleUnitDD.get('displayedValue'),
           CenterPoint: this.coordTool.get("value"),
@@ -760,9 +805,9 @@ define([
         ellipseText = (!window.isRTL) ?
           this.majorAxisLabel.textContent + " " +
           this.majorAxisInput.get('displayedValue') + " " +
-          this._getLengthAbbrevation(dijit.byId('lengthUnitDD').get('value')) :
+          this._getLengthAbbrevation(this.lengthUnitDD.get('value')) :
           this.majorAxisInput.get('displayedValue') + " " +
-          this._getLengthAbbrevation(dijit.byId('lengthUnitDD').get('value')) + " " + this.nls.majorRadiusLabel;
+          this._getLengthAbbrevation(this.lengthUnitDD.get('value')) + " " + this.nls.majorRadiusLabel;
 
         this._textGL.add(new EsriGraphic(polyCenter,
           dojoLang.clone(this._labelSym).setText(ellipseText)));
@@ -884,15 +929,21 @@ define([
      * Make sure any active tools are deselected to prevent multiple actions being performed
      */
     tabSwitched: function () {
-      this.dt.deactivate();
-      this.dt.cleanup();
-      this.dt.disconnectOnMouseMoveHandler();
+      if (this.dt) {
+        this.dt.deactivate();
+        this.dt.cleanup();
+        this.dt.disconnectOnMouseMoveHandler();
+      }
       this._setMapNavigation(true);
-      this.dt.removeStartGraphic();
+      if (this.dt) {
+        this.dt.removeStartGraphic();
+      }
       if (this.addPointBtn) {
         dojoDomClass.remove(this.addPointBtn, 'drawPointBtn-active');
       }
-      DijitPopup.close(this.coordinateFormat);
+      if (this.coordinateFormat) {
+        DijitPopup.close(this.coordinateFormat);
+      }
     },
 
     /**
@@ -973,6 +1024,112 @@ define([
      */
     setLastFocusNode: function () {
       jimuUtils.initLastFocusNode(this.domNodeObj, this.clearGraphicsButton);
+    },
+
+    /**
+     * This function creates symbols in config UI
+     * @param {object} symbolNode: contains a symbol chooser node
+     * @param {string} symbolType: contains symbol type
+     * @param {string} geometryType: contains symbol geometry type
+     * @param {string} symbolChooserTitle: contains a symbol chooser popup title
+     * @memberOf widgets/DD/Views/TabEllipse
+     */
+    _createSymbolPicker: function (symbolNode, symbolType, geometryType, symbolChooserTitle) {
+      var objSymbol, params;
+      //if symbol geometry exist
+      if (geometryType) {
+        objSymbol = {};
+        objSymbol.type = jimuUtils.getSymbolTypeByGeometryType(geometryType);
+        // if symbols parameter available in input parameters then take symbol details
+        if (this.hasOwnProperty('_ellipseSym')) {
+          // fetch selected symbol from config
+          objSymbol.symbol = this._ellipseSym;
+        }
+        // }
+        //create params to initialize 'symbolchooserPopup' widget
+        params = {
+          symbolChooserTitle: symbolChooserTitle,
+          symbolParams: objSymbol,
+          nls: this.nls,
+          symbolType: symbolType
+        };
+        //display configured symbol in symbol chooser node
+        this._showSelectedSymbol(symbolNode, objSymbol.symbol, symbolType);
+        //attach 'click' event on node to display symbol chooser popup
+        this.own(dojoOn(symbolNode, 'click', dojoLang.hitch(this, function () {
+          //set recently selected symbol in symbol chooser popup
+          objSymbol.symbol = this._ellipseSym;
+          this._initSymbolChooserPopup(params, symbolNode);
+          focusUtil.focus(this.ellipseSymbolNode);
+        })));
+        this.own(dojoOn(symbolNode, 'keydown', dojoLang.hitch(this, function (evt) {
+          if (evt.keyCode === dojoKeys.ENTER || evt.keyCode === dojoKeys.SPACE) {
+            //set recently selected symbol in symbol chooser popup
+            objSymbol.symbol = this._ellipseSym;
+            this._initSymbolChooserPopup(params, symbolNode);
+            focusUtil.focus(this.ellipseSymbolNode);
+          }
+        })));
+      }
+    },
+
+    /**
+    * Initialize symbol chooser popup widget
+    * @param {object} params: contains params to initialize widget
+    * @param {object} symbolChooserNode: contains node to display selected graphic symbol
+    * @memberOf widgets/DD/Views/TabEllipse
+    **/
+    _initSymbolChooserPopup: function (params, symbolChooserNode) {
+      var symbolChooserObj = new SymbolChooserPopup(params);
+      //handler for poopup 'OK' button 'click' event
+      symbolChooserObj.onOkClick = dojoLang.hitch(this, function () {
+        //get selected symbol
+        var symbolJson = symbolChooserObj.symbolChooser.getSymbol();
+        this._showSelectedSymbol(symbolChooserNode, symbolJson, params.symbolType);
+        symbolChooserObj.popup.close();
+      });
+    },
+
+    /**
+    * show selected graphic symbol in symbol chooser node
+    * @param {object} symbolChooserNode: contains a symbol chooser node
+    * @param {object} symbolJson: contains a json structure for symbol
+    * @param {string} symbolType: contains symbol type
+    * @member of widgets/DD/Views/TabEllipse
+    **/
+    _showSelectedSymbol: function (symbolChooserNode, symbolJson, symbolType) {
+      domConstruct.empty(symbolChooserNode);
+      if (symbolJson) {
+        var symbolNode = symbolUtils.createSymbolNode(symbolJson);
+        // if symbol node is not created
+        if (!symbolNode) {
+          symbolNode = domConstruct.create('div');
+        }
+        domConstruct.place(symbolNode, symbolChooserNode);
+        //store selected symbol in 'symbolParams' object
+        this._ellipseSym = new EsriSimpleFillSymbol(symbolJson.toJson());
+        this.dt.setLineSymbol(this._ellipseSym);
+      }
+    },
+
+    _createColorPicker: function (node) {
+      var colorPicker = new ColorPickerEditor({
+        nls: this.nls,
+        tab: "ellipse"
+      });
+      colorPicker.placeAt(node);
+      colorPicker.startup();
+      return colorPicker;
+    },
+
+    _getColorPicker: function () {
+      return this.labelColorPicker.getValues();
+    },
+
+    _setColorPicker: function (color) {
+      this.labelColorPicker.setValues({
+        color: new DojoColor(color)
+      });
     }
   });
 });

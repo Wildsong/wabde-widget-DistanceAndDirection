@@ -160,5 +160,14 @@ define({
   "rings": "Žiedai",
   "orientationUnit": "Padėties vienetas",
   "radiusUnit": "Spindulio vienetas",
-  "angleUnitLabel": "Kampo vienetas"
+  "angleUnitLabel": "Kampo vienetas",
+  "editSymbologyHint": "Patarimas. Norėdami redaguoti simbolizaciją, spustelėkite peržiūros piktogramą",
+  "lineSymbologyPopupTittle": "Linijos simbolizacija",
+  "circleSymbologyPopupTittle": "Apskritimo simbolizacija",
+  "ellipseSymbologyPopupTittle": "Elipsės simbolizacija",
+  "ringSymbologyPopupTittle": "Žiedų simbolizacija",
+  "symbolAndLabelSettingsLabel": "Simbolių ir žymių nustatymai",
+  "symbologyPreviewLabel": "Simbolizacijos peržiūra",
+  "ColorAndSizeLabel": "Žymės spalva ir dydis",
+  "colorPickerLabel": "Spalvos parinkiklis"
 });

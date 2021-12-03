@@ -160,5 +160,14 @@ define({
   "rings": "Obroči",
   "orientationUnit": "Enota usmerjenosti",
   "radiusUnit": "Enota polmera",
-  "angleUnitLabel": "Enota kota"
+  "angleUnitLabel": "Enota kota",
+  "editSymbologyHint": "Namig: Kliknite ikono za predogled za urejanje simbologije",
+  "lineSymbologyPopupTittle": "Simbologija črt",
+  "circleSymbologyPopupTittle": "Simbologija krogov",
+  "ellipseSymbologyPopupTittle": "Simbologija elips",
+  "ringSymbologyPopupTittle": "Simbologija obročev",
+  "symbolAndLabelSettingsLabel": "Nastavitve simbolov in napisov",
+  "symbologyPreviewLabel": "Predogled simbologije",
+  "ColorAndSizeLabel": "Barva in velikost napisa",
+  "colorPickerLabel": "Izbirnik barve"
 });

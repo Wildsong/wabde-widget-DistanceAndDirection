@@ -160,5 +160,14 @@ define({
   "rings": "Anelli",
   "orientationUnit": "Unità di orientamento",
   "radiusUnit": "Unità raggio",
-  "angleUnitLabel": "Unità angolo"
+  "angleUnitLabel": "Unità angolo",
+  "editSymbologyHint": "Suggerimento: Clicca sull'icona di anteprima per modificare la simbologia",
+  "lineSymbologyPopupTittle": "Simbologia della linea",
+  "circleSymbologyPopupTittle": "Simbologia del cerchio",
+  "ellipseSymbologyPopupTittle": "Simbologia dell'ellissi",
+  "ringSymbologyPopupTittle": "Simbologia degli anelli",
+  "symbolAndLabelSettingsLabel": "Impostazioni dei simboli e delle etichette",
+  "symbologyPreviewLabel": "Anteprima della simbologia",
+  "ColorAndSizeLabel": "Colore e dimensione dell'etichetta",
+  "colorPickerLabel": "Selettore colore"
 });

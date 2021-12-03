@@ -160,5 +160,14 @@ define({
   "rings": "Ringid",
   "orientationUnit": "Suunaühik",
   "radiusUnit": "Raadiuse ühik",
-  "angleUnitLabel": "Nurga ühik"
+  "angleUnitLabel": "Nurga ühik",
+  "editSymbologyHint": "Vihje: sümbolite muutmiseks klõpsake eelvaateikooni",
+  "lineSymbologyPopupTittle": "Joonesümbol",
+  "circleSymbologyPopupTittle": "Ringisümbol",
+  "ellipseSymbologyPopupTittle": "Ellipsisümbol",
+  "ringSymbologyPopupTittle": "Ringide sümbol",
+  "symbolAndLabelSettingsLabel": "Sümbolite ja märgiste sätted",
+  "symbologyPreviewLabel": "Sümbolite eelvaade",
+  "ColorAndSizeLabel": "Märgise värv ja suurus",
+  "colorPickerLabel": "Värvi valimine"
 });

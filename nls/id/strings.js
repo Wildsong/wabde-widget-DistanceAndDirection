@@ -160,5 +160,14 @@ define({
   "rings": "Cincin",
   "orientationUnit": "Unit Orientasi",
   "radiusUnit": "Unit Radius",
-  "angleUnitLabel": "Unit Sudut"
+  "angleUnitLabel": "Unit Sudut",
+  "editSymbologyHint": "Petunjuk: Klik ikon pratinjau untuk mengedit simbologi",
+  "lineSymbologyPopupTittle": "Simbologi garis",
+  "circleSymbologyPopupTittle": "Simbologi lingkaran",
+  "ellipseSymbologyPopupTittle": "Simbologi elips",
+  "ringSymbologyPopupTittle": "Simbologi cincin",
+  "symbolAndLabelSettingsLabel": "Pengaturan simbol dan label",
+  "symbologyPreviewLabel": "Pratinjau Simbologi",
+  "ColorAndSizeLabel": "Warna dan ukuran label",
+  "colorPickerLabel": "Pemilih Warna"
 });

@@ -160,5 +160,14 @@ define({
   "rings": "링",
   "orientationUnit": "방향 단위",
   "radiusUnit": "반경 단위",
-  "angleUnitLabel": "각도 단위"
+  "angleUnitLabel": "각도 단위",
+  "editSymbologyHint": "힌트: 심볼을 편집하려면 미리 보기 아이콘을 클릭합니다.",
+  "lineSymbologyPopupTittle": "라인 심볼",
+  "circleSymbologyPopupTittle": "원형 심볼",
+  "ellipseSymbologyPopupTittle": "타원 심볼",
+  "ringSymbologyPopupTittle": "링 심볼",
+  "symbolAndLabelSettingsLabel": "심볼 및 레이블 설정",
+  "symbologyPreviewLabel": "심볼 미리 보기",
+  "ColorAndSizeLabel": "레이블 색상 및 크기",
+  "colorPickerLabel": "색상 선택기"
 });

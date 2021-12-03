@@ -160,5 +160,14 @@ define({
   "rings": "Ringar",
   "orientationUnit": "Orienteringsenhet",
   "radiusUnit": "Radieenhet",
-  "angleUnitLabel": "Vinkelenhet"
+  "angleUnitLabel": "Vinkelenhet",
+  "editSymbologyHint": "Tips: Klicka på förhandsgranskningsikonen för att redigera symbologin",
+  "lineSymbologyPopupTittle": "Linjesymbologi",
+  "circleSymbologyPopupTittle": "Cirkelsymbologi",
+  "ellipseSymbologyPopupTittle": "Ellipssymbologi",
+  "ringSymbologyPopupTittle": "Ringsymbologi",
+  "symbolAndLabelSettingsLabel": "Symbol- och etikettinställningar",
+  "symbologyPreviewLabel": "Förhandsgranskning av symbologi",
+  "ColorAndSizeLabel": "Etikettfärg och -storlek",
+  "colorPickerLabel": "Färgurval"
 });

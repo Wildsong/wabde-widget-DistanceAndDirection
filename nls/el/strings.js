@@ -160,5 +160,14 @@ define({
   "rings": "Δακτύλιοι",
   "orientationUnit": "Μονάδα προσανατολισμού",
   "radiusUnit": "Μονάδα μέτρησης ακτίνας",
-  "angleUnitLabel": "Μονάδα μέτρησης γωνίας"
+  "angleUnitLabel": "Μονάδα μέτρησης γωνίας",
+  "editSymbologyHint": "Υπόδειξη: Κάντε κλικ στο εικονίδιο προεπισκόπησης για να επεξεργαστείτε τo συμβολισμό",
+  "lineSymbologyPopupTittle": "Συμβολισμός γραμμής",
+  "circleSymbologyPopupTittle": "Συμβολισμός κύκλου",
+  "ellipseSymbologyPopupTittle": "Συμβολισμός έλλειψης",
+  "ringSymbologyPopupTittle": "Συμβολισμός δακτυλίων",
+  "symbolAndLabelSettingsLabel": "Ρυθμίσεις συμβόλου και ετικέτας",
+  "symbologyPreviewLabel": "Προεπισκόπηση συμβολισμού",
+  "ColorAndSizeLabel": "Μέγεθος και χρώμα ετικέτας",
+  "colorPickerLabel": "Εργαλείο Επιλογής Χρώματος"
 });

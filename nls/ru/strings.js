@@ -160,5 +160,14 @@ define({
   "rings": "Кольца",
   "orientationUnit": "Единица ориентации",
   "radiusUnit": "Единица измерения радиуса",
-  "angleUnitLabel": "Единица угла"
+  "angleUnitLabel": "Единица угла",
+  "editSymbologyHint": "Подсказка: Щелкните значок предварительного просмотра, чтобы отредактировать символы",
+  "lineSymbologyPopupTittle": "Символы линий",
+  "circleSymbologyPopupTittle": "Символы окружностей",
+  "ellipseSymbologyPopupTittle": "Символы эллипсов",
+  "ringSymbologyPopupTittle": "Символы колец",
+  "symbolAndLabelSettingsLabel": "Настройки символа и надписи",
+  "symbologyPreviewLabel": "Предварительный просмотр символа",
+  "ColorAndSizeLabel": "Цвета и размер надписи",
+  "colorPickerLabel": "Выбор цветов"
 });

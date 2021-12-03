@@ -22,10 +22,6 @@
   margin-left: 0px;
 }
 
-.distance-and-direction-setting-h3 {
-  color: #596679;
-}
-
 .distance-and-direction-setting-style table {
   color: #333333;
   width: 100%;
@@ -162,4 +158,86 @@
 .distance-and-direction-setting .jimu-viewstack {
   height: calc(100% - 45px);
   overflow: auto;
+}
+
+
+.distance-and-direction-setting .esriCTFieldSet {
+  height: auto;
+  width: calc(100% - 4px);
+  border: 1px solid rgb(160, 172, 191);
+  border-radius: 5px;
+  font-size: 14px;
+  color: rgb(89, 102, 121);
+  margin: 10px 0px;
+}
+
+.distance-and-direction-setting .esriCTFieldSetLegend {
+  margin-left: 15px;
+  font-weight: bold;
+}
+
+.distance-and-direction-setting .esriCTHintCheck {
+  font-size: 13px;
+  color: #a0acbf;
+  font-style: oblique;
+  line-height: 20px;
+  width: 100%;
+  text-indent: 25px;
+  padding-bottom: 5px;
+}
+
+.distance-and-direction-setting .esriCTWrapper {
+  width: 100%;
+  overflow: hidden;
+  padding: 5px 0px 5px 0px;
+}
+
+.distance-and-direction-setting .esriCTLabel {
+  padding: 0px 15px 0px 0px;
+  word-break: break-word;
+  line-height: 30px;
+}
+
+.distance-and-direction-setting .esriCTColumn {
+  float: left;
+  width: 33.33%
+}
+
+.distance-and-direction-setting .esriCTHalfWidth {
+  width: 50%
+}
+
+.distance-and-direction-setting .esriCTPreviewTextColor{
+  color: #a0acbf;
+}
+
+.distance-and-direction-setting .esriCTHeight {
+  height: 40px;
+}
+
+.distance-and-direction-symbolChooserPopup .esriCTSymbolChooserContainer {
+  height: calc(100% - 50px);
+  overflow: auto;
+}
+
+.jimu-rtl .distance-and-direction-setting .esriCTColumn {
+  float: right;
+}
+
+.jimu-rtl .distance-and-direction-setting .esriCTFieldSetLegend {
+  margin-right: 15px;
+  margin-left: 0px;
+}
+
+.jimu-rtl .distance-and-direction-setting .esriCTMargin25 {
+  margin-right: 25px;
+  margin-left: 0px;
+}
+
+.distance-and-direction-setting .esriCTMargin25 {
+  margin-left: 25px;
+}
+
+.jimu-rtl .distance-and-direction-setting .esriCTLabel {
+  padding: 0px 0px 0px 15px;
 }

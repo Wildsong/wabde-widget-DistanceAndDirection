@@ -160,5 +160,14 @@ define({
   "rings": "圓環",
   "orientationUnit": "方向單位",
   "radiusUnit": "半徑單位",
-  "angleUnitLabel": "角度單位"
+  "angleUnitLabel": "角度單位",
+  "editSymbologyHint": "提示: 按一下預覽圖示以編輯符號系統",
+  "lineSymbologyPopupTittle": "線符號系統",
+  "circleSymbologyPopupTittle": "圓符號系統",
+  "ellipseSymbologyPopupTittle": "橢圓符號系統",
+  "ringSymbologyPopupTittle": "環符號系統",
+  "symbolAndLabelSettingsLabel": "符號和標籤設定",
+  "symbologyPreviewLabel": "符號系統預覽",
+  "ColorAndSizeLabel": "標籤顏色和大小",
+  "colorPickerLabel": "顏色選取器"
 });

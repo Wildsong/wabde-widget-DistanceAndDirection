@@ -160,5 +160,14 @@ define({
   "rings": "Renkaat",
   "orientationUnit": "Suuntayksikkö",
   "radiusUnit": "Säteen yksikkö",
-  "angleUnitLabel": "Kulman yksikkö"
+  "angleUnitLabel": "Kulman yksikkö",
+  "editSymbologyHint": "Vihje: muokkaa symboleja napsauttamalla esikatselukuvaketta",
+  "lineSymbologyPopupTittle": "Viivasymbolit",
+  "circleSymbologyPopupTittle": "Ympyräsymbolit",
+  "ellipseSymbologyPopupTittle": "Ellipsisymbolit",
+  "ringSymbologyPopupTittle": "Rengassymbolit",
+  "symbolAndLabelSettingsLabel": "Symboleiden ja tunnustekstien asetukset",
+  "symbologyPreviewLabel": "Symboleiden esikatselu",
+  "ColorAndSizeLabel": "Tunnustekstin väri ja koko",
+  "colorPickerLabel": "Värinvalitsin"
 });

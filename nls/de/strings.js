@@ -160,5 +160,14 @@ define({
   "rings": "Ringe",
   "orientationUnit": "Ausrichtungseinheit",
   "radiusUnit": "Radiuseinheit",
-  "angleUnitLabel": "Winkeleinheit"
+  "angleUnitLabel": "Winkeleinheit",
+  "editSymbologyHint": "Hinweis: Klicken Sie auf das Vorschausymbol, um die Symbolisierung zu bearbeiten.",
+  "lineSymbologyPopupTittle": "Liniensymbolisierung",
+  "circleSymbologyPopupTittle": "Kreissymbolisierung",
+  "ellipseSymbologyPopupTittle": "Ellipsensymbolisierung",
+  "ringSymbologyPopupTittle": "Ringsymbolisierung",
+  "symbolAndLabelSettingsLabel": "Einstellungen für Symbole und Beschriftungen",
+  "symbologyPreviewLabel": "Symbolisierungsvorschau",
+  "ColorAndSizeLabel": "Farbe und Größe der Beschriftung",
+  "colorPickerLabel": "Farbauswahl"
 });

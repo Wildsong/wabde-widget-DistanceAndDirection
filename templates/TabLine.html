@@ -84,6 +84,32 @@
         </select>
       </div>
     </div>
+
+    <div class="controlGroup" data-dojo-attach-point='symbologyControlDiv'>
+      <div data-dojo-attach-point='symbolControl' title="${nls.symbolAndLabelSettingsLabel}"
+        data-dojo-type="dijit/TitlePane" data-dojo-props="open: false">
+        <div class="controlGroup" style="margin-top: 0px;">
+    
+          <div class="controlItem esriCTPaddingBottom10">
+            <div class="esriCTLabel">${nls.symbologyPreviewLabel}</div>
+            <div class="esriCTSymbolNode" tabindex="0" data-dojo-attach-point="lineSymbolNode"></div>
+          </div>
+    
+          <div class="controlItem esriCTPaddingBottom10 esriCTLabelSettings">
+            <div class="esriCTLabel">${nls.ColorAndSizeLabel}</div>
+            <div style="margin-right:10px;" tabindex="0" aria-label="${nls.colorPickerLabel}"
+              data-dojo-attach-point="labelColorPickerNode"></div>
+            <input data-dojo-attach-point="labelTextSizeSpinner" aria-label="${nls.ColorAndSizeLabel}"
+              data-dojo-type="dijit/form/NumberSpinner"
+              data-dojo-props='value:12,smallDelta:1,constraints:{min:1, max:36, places: 0}' type="text"
+              style="width: calc(100% - 195px)" />
+          </div>
+    
+          <div class="esriCTHintCheck">${nls.editSymbologyHint}</div>
+        </div>
+      </div>
+    </div>
+
     <div class="buttonContainer">
       <div class='jimu-btn jimu-state-disabled' data-dojo-attach-point='okButton' style="width: 49%;"
         data-dojo-attach-event="onclick: okButtonClicked" tabindex="-1" aria-label="${nls.common.ok}" role="button">

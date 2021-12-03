@@ -160,5 +160,14 @@ define({
   "rings": "Кільця",
   "orientationUnit": "Одиниця орієнтації",
   "radiusUnit": "Одиниця радіусу",
-  "angleUnitLabel": "Одиниця кута"
+  "angleUnitLabel": "Одиниця кута",
+  "editSymbologyHint": "Підказка: клацніть на значок попереднього перегляду, щоб змінити символи",
+  "lineSymbologyPopupTittle": "Умовні позначення лінії",
+  "circleSymbologyPopupTittle": "Умовні позначення кола",
+  "ellipseSymbologyPopupTittle": "Умовні позначення еліпсу",
+  "ringSymbologyPopupTittle": "Умовні позначення кільця",
+  "symbolAndLabelSettingsLabel": "Налаштування умовних позначень та написів",
+  "symbologyPreviewLabel": "Попередній перегляд умовних позначень",
+  "ColorAndSizeLabel": "Колір та розмір напису",
+  "colorPickerLabel": "Панель вибору кольору"
 });

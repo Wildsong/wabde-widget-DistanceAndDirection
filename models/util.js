@@ -20,12 +20,14 @@ define([
   'dojo/_base/declare',
   'dojo/_base/array',
   'dojo/_base/Deferred',
-  'esri/tasks/GeometryService'
+  'esri/tasks/GeometryService',
+  'jimu/utils'
 ], function (
   dojoDeclare,
   dojoArray,
   Deferred,
-  EsriGeometryService
+  EsriGeometryService,
+  jimuUtils
 ) {
   'use strict';
   return dojoDeclare(null, {
@@ -281,6 +283,9 @@ define([
       r.latdeg = parts[0].replace(/[nNsS]/, '');
       r.londeg = parts[1].replace(/[eEwW]/, '');
 
+      r.latdeg = jimuUtils.localizeNumber(parseFloat(r.latdeg));
+      r.londeg = jimuUtils.localizeNumber(parseFloat(r.londeg));
+
       if (addSignPrefix) {
         r.latdeg = (parts[0].slice(-1) === 'N') ? '+' + r.latdeg : '-' + r.latdeg;
         r.londeg = (parts[1].slice(-1) === "W") ? '-' + r.londeg : '+' + r.londeg;
@@ -309,6 +314,9 @@ define([
       r.latmin = r.parts[1].replace(/[nNsS]/, '');
       r.londeg = r.parts[2];
       r.lonmin = r.parts[3].replace(/[eEwW]/, '');
+
+      r.latmin = jimuUtils.localizeNumber(parseFloat(r.latmin));
+      r.lonmin = jimuUtils.localizeNumber(parseFloat(r.lonmin));
 
       if (addSignPrefix) {
         r.latdeg = (r.parts[1].slice(-1) === 'N') ? '+' + r.latdeg : '-' + r.latdeg;
@@ -344,6 +352,9 @@ define([
       r.londeg = r.parts[3];
       r.lonmin = r.parts[4];
       r.lonsec = r.parts[5].replace(/[EWew]/, '');
+
+      r.latsec = jimuUtils.localizeNumber(parseFloat(r.latsec));
+      r.lonsec = jimuUtils.localizeNumber(parseFloat(r.lonsec));
 
       if (addSignPrefix) {
         r.latdeg = (r.parts[2].slice(-1) === 'N') ? '+' + r.latdeg : '-' + r.latdeg;
